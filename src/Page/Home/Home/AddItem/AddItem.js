@@ -7,7 +7,6 @@ import './AddItem.css'
 
 const AddItem = () => {
     const [user] = useAuthState(auth);
-    console.log(user?.displayName);
 
     const handleAddItems = (event) => {
 
@@ -43,7 +42,7 @@ const AddItem = () => {
 
 
                 <form className='p-5' onSubmit={handleAddItems} >
-                    <input className='w-100 mb-2' value={user?.displayName} readOnly type="text" name="name" id="" placeholder='name' required />
+                    <input className='w-100 mb-2' value={user?.displayName} type="text" name="name" id="" placeholder='name' required />
                     <br />
                     <input className='w-100 mb-2' value={user?.email} readOnly type="email" name="email" id="" placeholder='email' required />
                     <br />

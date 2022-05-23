@@ -32,7 +32,7 @@ const Login = () => {
     }
 
     if (user) {
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
     }
 
     if (error) {
@@ -45,8 +45,6 @@ const Login = () => {
         const password = passwordRef.current.value;
 
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('http://localhost:5000/login', { email })
-        localStorage.setItem('accessToken', data.accessToken);
         navigate(from, { replace: true });
     }
 
@@ -58,7 +56,6 @@ const Login = () => {
         const email = emailRef.current.value;
         if (email) {
             await sendPasswordResetEmail(email);
-
             toast('Sent email');
         }
         else {

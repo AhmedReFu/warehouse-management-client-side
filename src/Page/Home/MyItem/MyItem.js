@@ -21,7 +21,7 @@ const MyItem = () => {
 
         getMyItem();
 
-    }, [myItem])
+    }, [user?.email])
 
 
 

@@ -7,7 +7,7 @@ import './AddItem.css'
 
 const AddItem = () => {
     const [user] = useAuthState(auth);
-    //console.log(user?.email);
+    console.log(user?.displayName);
 
     const handleAddItems = (event) => {
 

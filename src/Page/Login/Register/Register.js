@@ -4,8 +4,6 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import './Register.css';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Loading from '../Loading/Loading';
-
-import { updateProfile } from 'firebase/auth';
 import auth from '../../../firebase.init';
 
 const Register = () => {
@@ -16,7 +14,7 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-
+    const [updateProfile, updating] = useUpdateProfile(auth);
     // const [useUpdateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const navigate = useNavigate();
@@ -39,6 +37,7 @@ const Register = () => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
+        console.log(name)
         const password = event.target.password.value;
 
 
@@ -46,16 +45,16 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
 
         await updateProfile({ displayName: name });
-        console.log('Updated profile');
+        console.log(user);
 
-        navigate('/home');
+        navigate('/');
     }
 
     return (
         <div className='register-form '>
             <h2 style={{ textAlign: 'center' }}>Please Register</h2>
             <form onSubmit={handleRegister}>
-                <input type="text" name="name" id="" placeholder='Your Name' />
+                <input type="text" name="name" id="" placeholder='Your Name' required />
 
                 <input type="email" name="email" id="" placeholder='Email Address' required />
 

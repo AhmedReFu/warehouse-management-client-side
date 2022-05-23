@@ -7,7 +7,7 @@ import './AddItem.css'
 
 const AddItem = () => {
     const [user] = useAuthState(auth);
-
+    console.log(user);
     const handleAddItems = (event) => {
 
         event.preventDefault();

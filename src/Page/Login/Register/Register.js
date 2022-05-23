@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import './Register.css';
-import auth from '../../../firebase-init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Loading from '../Loading/Loading';
 
 import { updateProfile } from 'firebase/auth';
+import auth from '../../../firebase.init';
 
 const Register = () => {
     const [agree, setAgree] = useState(false);
@@ -52,7 +52,7 @@ const Register = () => {
     }
 
     return (
-        <div className='register-form'>
+        <div className='register-form '>
             <h2 style={{ textAlign: 'center' }}>Please Register</h2>
             <form onSubmit={handleRegister}>
                 <input type="text" name="name" id="" placeholder='Your Name' />
